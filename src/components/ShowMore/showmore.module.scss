@@ -1,0 +1,27 @@
+$button-size: 32;
+
+.showmore {
+  position: relative;
+  overflow: hidden;
+
+  button {
+    position: absolute;
+    z-index: 10000;
+    top: calc((46 - $button-size) / 2) + px;
+    right: 20px;
+    width: $button-size + px;
+    aspect-ratio: 1;
+    border: 2px solid lightgreen;
+    background-color: white;
+    border-radius: 50%;
+    font-size: 1rem;
+  }
+
+  .gradient {
+    position: absolute;
+    bottom: 0;
+    background-image: linear-gradient(transparent 40%, white);
+    height: 50px;
+    width: 100%;
+  }
+}

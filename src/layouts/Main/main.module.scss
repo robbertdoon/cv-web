@@ -1,5 +1,7 @@
 @use "../../styles/colors.scss" as *;
 
 .main {
-  background-color: $color-primary;
+  background-color: $color-background-main;
+  flex: 1;
+  padding: 40px 20px;
 }
