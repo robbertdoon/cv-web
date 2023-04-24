@@ -14,14 +14,16 @@ $button-size: 32;
     border: 2px solid lightgreen;
     background-color: white;
     border-radius: 50%;
+    // font: unset;
     font-size: 1rem;
+    cursor: pointer;
   }
 
   .gradient {
     position: absolute;
     bottom: 0;
     background-image: linear-gradient(transparent 40%, white);
-    height: 50px;
+    height: 80px;
     width: 100%;
   }
 }

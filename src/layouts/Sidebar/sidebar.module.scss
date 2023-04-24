@@ -2,5 +2,10 @@
 
 .sidebar {
   // background-color: $color-secondary;
-  width: 320px;
+  // width: 320px;
+  border-right: 2px solid black;
+
+  @media only screen and (min-width: 600px) {
+    width: 320px;
+  }
 }

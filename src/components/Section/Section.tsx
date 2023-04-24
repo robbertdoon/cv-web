@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect, useRef } from "react";
+import { useState, useLayoutEffect, useRef, useEffect } from "react";
 import Heading from "../Heading/Heading"
 import Content from "../Content/Content"
 import ShowMore from "../ShowMore/ShowMore"
@@ -13,10 +13,11 @@ interface SectionProps {
 const Section: React.FC<SectionProps> = ({sectionTitle}) => {
     const [isOpen, setIsOpen] = useState(true);
     const [initialHeight, setInitialHeight] = useState<number>();
-    const [content, setContent] = useState<string>('');
+    const [content, setContent] = useState('');
     const [contentHeight, setContentHeight] = useState<number>();
     const contentRef = useRef<HTMLDivElement | null>(null);
     const initialRenderRef = useRef(true);
+
 
     //only render after content has fetched
     useLayoutEffect(() => {
@@ -28,11 +29,11 @@ const Section: React.FC<SectionProps> = ({sectionTitle}) => {
 
         if (!contentRef.current) return;
 
-        const height = contentRef.current.clientHeight;
-        setInitialHeight(height + 50); // margin for bottom of section
+        const height = contentRef.current.scrollHeight + 50; // hier stond margin
+        setInitialHeight(height); // margin for bottom of section
     }, [content])
-    
 
+    
     useLayoutEffect(() => {    
         if (isOpen) {   
             setContentHeight(initialHeight);
@@ -42,6 +43,24 @@ const Section: React.FC<SectionProps> = ({sectionTitle}) => {
         
     }, [isOpen, initialHeight])
 
+
+    // recalculate needed height on window resize
+    useEffect(() => {
+        const currentContentHeight = () => {
+            if (!contentRef.current) return;
+
+            // scrollheight wel de juiste? uitzoeken
+            const height = contentRef.current.scrollHeight;           
+            // bij scherm minder breed wordt de height hoger
+            // maar bij scherm breder wordt de height niet minder 
+            setContentHeight(height);
+        }
+      
+        window.addEventListener('resize', currentContentHeight);
+        return () => window.removeEventListener('resize', currentContentHeight);
+    }, [])
+
+
     runSwitch(sectionTitle, setContent);
 
     return (
@@ -49,8 +68,6 @@ const Section: React.FC<SectionProps> = ({sectionTitle}) => {
             <ShowMore isOpen={isOpen} setIsOpen={setIsOpen}>
                 <Heading title={sectionTitle} />
                 <Content ref={contentRef} contentHeight={contentHeight} dangInnerHTML={content} />
-                    {/* {content}
-                </Content> */}
             </ShowMore>
         </section>
     )

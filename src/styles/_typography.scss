@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Gochi+Hand&family=JetBrains+Mono&family=Righteous&display=swap");
+* {
+  font-family: JetBrains Mono;
+}
+
+h1,
+h2,
+h3 {
+  font-family: Gochi Hand;
+
+  span {
+    font-family: Gochi Hand;
+  }
+}
+
+h1 {
+  font-size: 12rem;
+}
+
+h2 {
+  font-size: 4rem;
+  line-height: 0;
+}
+
+h3 {
+  font-size: 3rem;
+}

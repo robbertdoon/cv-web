@@ -15,7 +15,7 @@ export const runSwitch = (sectionTitle: string, setContent: React.Dispatch<React
 
     const dataPath = async (url: string) => {
         const data = await getSectionData(url);
-        // map over keys in object and render it somehow
+        // map over all keys in the json object and render it somehow
         setContent(data.html);
     }
 
