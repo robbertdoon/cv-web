@@ -1,4 +1,4 @@
-$button-size: 32;
+$button-size: 40;
 
 .showmore {
   position: relative;
@@ -7,15 +7,14 @@ $button-size: 32;
   button {
     position: absolute;
     z-index: 10000;
-    top: calc((46 - $button-size) / 2) + px;
-    right: 20px;
+    top: calc(($button-size * 1.34 - $button-size) / 2) + px;
+    right: 0;
     width: $button-size + px;
     aspect-ratio: 1;
-    border: 2px solid lightgreen;
     background-color: white;
     border-radius: 50%;
-    // font: unset;
-    font-size: 1rem;
+    font: unset;
+    font-size: 2rem;
     cursor: pointer;
   }
 

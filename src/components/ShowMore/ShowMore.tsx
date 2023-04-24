@@ -1,4 +1,5 @@
 import styles from './showmore.module.scss'
+import { colors, randomColor } from '../../globals/colors';
 
 interface ShowMoreProps {
     children: React.ReactNode;
@@ -13,7 +14,7 @@ const ShowMore: React.FC<ShowMoreProps> = ({children, isOpen, setIsOpen}) => {
 
   return (
     <div className={styles.showmore}>
-      <button type='button' onClick={openClose}>{isOpen ? '-' : '+'}</button>
+      <button type='button' onClick={openClose} style={{border: '2px solid ' + colors[randomColor]}}>{isOpen ? '-' : '+'}</button>
       {children}
       <div className={styles.gradient} />
     </div>

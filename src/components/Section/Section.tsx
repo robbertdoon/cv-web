@@ -6,6 +6,8 @@ import styles from './section.module.scss';
 
 import { runSwitch } from "./sectionController";
 
+const bottomMargin = 50;
+
 interface SectionProps {
     sectionTitle: string;
 }
@@ -29,7 +31,9 @@ const Section: React.FC<SectionProps> = ({sectionTitle}) => {
 
         if (!contentRef.current) return;
 
-        const height = contentRef.current.scrollHeight + 50; // hier stond margin
+        
+
+        const height = contentRef.current.scrollHeight + bottomMargin;
         setInitialHeight(height); // margin for bottom of section
     }, [content])
 
@@ -48,12 +52,18 @@ const Section: React.FC<SectionProps> = ({sectionTitle}) => {
     useEffect(() => {
         const currentContentHeight = () => {
             if (!contentRef.current) return;
+            
+            let childrenHeight = 0;
+            const childrenArray = [...contentRef.current.children]
 
-            // scrollheight wel de juiste? uitzoeken
-            const height = contentRef.current.scrollHeight;           
-            // bij scherm minder breed wordt de height hoger
-            // maar bij scherm breder wordt de height niet minder 
-            setContentHeight(height);
+            childrenArray.map(element => {
+                // console.log(element.scrollHeight),
+                childrenHeight += element.scrollHeight
+            })
+            
+            // TODO: if !isOpen don't expand section on resize (-:)
+            setIsOpen(true);
+            setContentHeight(childrenHeight + bottomMargin);
         }
       
         window.addEventListener('resize', currentContentHeight);

@@ -1,11 +1,33 @@
-@use "../../styles/colors.scss" as *;
+@use "../../styles/screens.scss" as *;
 
 .sidebar {
-  // background-color: $color-secondary;
-  // width: 320px;
-  border-right: 2px solid black;
-
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: $screen-m) {
+    border-right: 2px solid black;
     width: 320px;
+  }
+
+  .wrapper {
+    padding: 15px;
+
+    > * {
+      color: white;
+    }
+
+    h3 {
+      &:not(:first-of-type) {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  a,
+  a:active,
+  a:focus {
+    color: yellow;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: red;
   }
 }
