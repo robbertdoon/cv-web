@@ -2,12 +2,13 @@
 
 .sidebar {
   @media only screen and (min-width: $screen-m) {
-    border-right: 2px solid black;
+    border-right: 1px solid rgb(226, 226, 226);
     width: 320px;
+    position: relative;
   }
 
   .wrapper {
-    padding: 15px;
+    padding: 20px;
 
     > * {
       color: white;
@@ -15,7 +16,7 @@
 
     h3 {
       &:not(:first-of-type) {
-        margin-top: 20px;
+        margin-top: 40px;
       }
     }
   }

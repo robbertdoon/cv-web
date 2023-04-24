@@ -1,0 +1,15 @@
+.skills {
+  display: flex;
+  justify-content: space-between;
+
+  .rating {
+    font-size: 2rem;
+    line-height: 1;
+
+    > * {
+      &:last-child {
+        color: darken(white, 70%);
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect, useRef, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Heading from "../Heading/Heading"
 import Content from "../Content/Content"
 import ShowMore from "../ShowMore/ShowMore"
@@ -14,7 +14,6 @@ interface SectionProps {
 
 const Section: React.FC<SectionProps> = ({sectionTitle}) => {
     const [isOpen, setIsOpen] = useState(true);
-    const [initialHeight, setInitialHeight] = useState<number>();
     const [content, setContent] = useState('');
     const [contentHeight, setContentHeight] = useState<number>();
     const contentRef = useRef<HTMLDivElement | null>(null);
@@ -22,53 +21,30 @@ const Section: React.FC<SectionProps> = ({sectionTitle}) => {
 
 
     //only render after content has fetched
-    useLayoutEffect(() => {
+    useEffect(() => {
         // skip pageload render
         if (initialRenderRef.current) {
             initialRenderRef.current = false;
-            return
-        }
-
-        if (!contentRef.current) return;
-
-        
-
-        const height = contentRef.current.scrollHeight + bottomMargin;
-        setInitialHeight(height); // margin for bottom of section
-    }, [content])
-
-    
-    useLayoutEffect(() => {    
-        if (isOpen) {   
-            setContentHeight(initialHeight);
-        } else {
-            setContentHeight(0);
+            return;
         }
         
-    }, [isOpen, initialHeight])
+        if (!contentRef.current) return;      
 
-
-    // recalculate needed height on window resize
-    useEffect(() => {
-        const currentContentHeight = () => {
-            if (!contentRef.current) return;
-            
-            let childrenHeight = 0;
-            const childrenArray = [...contentRef.current.children]
-
+        const currentContentHeight = () => {            
+            let childrenHeight = bottomMargin;
+            const childrenArray = [...contentRef.current!.children]
             childrenArray.map(element => {
-                // console.log(element.scrollHeight),
                 childrenHeight += element.scrollHeight
             })
             
-            // TODO: if !isOpen don't expand section on resize (-:)
-            setIsOpen(true);
-            setContentHeight(childrenHeight + bottomMargin);
+            setContentHeight(childrenHeight);
         }
+
+        currentContentHeight();
       
         window.addEventListener('resize', currentContentHeight);
         return () => window.removeEventListener('resize', currentContentHeight);
-    }, [])
+    }, [content, isOpen])
 
 
     runSwitch(sectionTitle, setContent);
@@ -77,7 +53,7 @@ const Section: React.FC<SectionProps> = ({sectionTitle}) => {
         <section className={styles.section}>
             <ShowMore isOpen={isOpen} setIsOpen={setIsOpen}>
                 <Heading title={sectionTitle} />
-                <Content ref={contentRef} contentHeight={contentHeight} dangInnerHTML={content} />
+                <Content ref={contentRef} contentHeight={contentHeight} dangInnerHTML={content} isOpen={isOpen} />
             </ShowMore>
         </section>
     )
