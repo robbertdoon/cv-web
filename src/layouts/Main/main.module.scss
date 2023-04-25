@@ -1,7 +1,21 @@
 @use "../../styles/colors.scss" as *;
+@use "../../styles/screens.scss" as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
 
 .main {
   background-color: $color-background-main;
   flex: 1;
-  padding: 20px 60px;
+  padding: 20px;
+
+  @media only screen and (min-width: $screen-s) {
+    padding-inline: 40px;
+  }
+
+  @media only screen and (min-width: $screen-m) {
+    padding-inline: 60px;
+  }
 }

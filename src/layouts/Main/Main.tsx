@@ -4,12 +4,14 @@ import styles from './main.module.scss'
 
 const Main = () => {
   return (
-    <main className={styles.main}>
+    <div className={styles.wrapper}>
       <PageTitle title='Robbert Doon' subtitle='Front-end developer' />
-      <Section sectionTitle='Profiel' />
-      <Section sectionTitle='Cursussen' />
-      <Section sectionTitle='Opleidingen' />
-    </main>
+      <main className={styles.main}>
+        <Section sectionTitle='Profiel' />
+        <Section sectionTitle='Cursussen' />
+        <Section sectionTitle='Opleidingen' />
+      </main>
+    </div>
   )
 }
 export default Main

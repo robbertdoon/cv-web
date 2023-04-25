@@ -1,14 +1,44 @@
 @use "../../styles/screens.scss" as *;
 
 .sidebar {
-  @media only screen and (min-width: $screen-m) {
-    border-right: 1px solid rgb(226, 226, 226);
-    width: 320px;
+  display: flex;
+  flex-direction: column;
+
+  @media only screen and (min-width: $screen-s) {
     position: relative;
+    flex-direction: row;
+    > * {
+      min-width: 50%;
+    }
+  }
+
+  @media only screen and (min-width: $screen-m) {
+    flex-direction: column;
+    min-width: 260px;
+  }
+
+  @media only screen and (min-width: $screen-l) {
+    min-width: 320px;
   }
 
   .wrapper {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @media only screen and (min-width: $screen-s) {
+      height: 100vh;
+    }
+
+    @media only screen and (min-width: $screen-m) {
+      height: auto;
+    }
+
+    @media only screen and (min-width: $screen-xl) {
+      position: sticky;
+      top: 0;
+    }
 
     > * {
       color: white;

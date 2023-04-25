@@ -3,7 +3,9 @@ import styles from './profilepicture.module.scss';
 
 const ProfilePicture = () => {
   return (
-    <img className={styles.profilepicture} src={image} alt="Profile picture of Robbert Doon" />
+    <figure className={styles.profilepicture}>
+      <img src={image} alt="Profile picture of Robbert Doon" />
+    </figure>
   )
 }
 export default ProfilePicture

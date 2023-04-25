@@ -13,7 +13,7 @@ interface SectionProps {
 }
 
 const Section: React.FC<SectionProps> = ({sectionTitle}) => {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
     const [content, setContent] = useState('');
     const [contentHeight, setContentHeight] = useState<number>();
     const contentRef = useRef<HTMLDivElement | null>(null);
