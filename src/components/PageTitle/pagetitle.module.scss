@@ -1,7 +1,7 @@
 @use "../../styles/screens.scss" as *;
 
 .pagetitle {
-  background-color: black;
+  background-color: lighten(black, 20%);
   color: white;
   padding-inline: 20px;
   height: 160px;
@@ -16,13 +16,17 @@
 
   @media only screen and (min-width: $screen-m) {
     padding-inline: 60px;
-    height: 314px; // moet nog dynamisch opgehaald worden
+    height: 352px;
+  }
+
+  @media only screen and (min-width: $screen-l) {
+    height: 432px;
   }
 
   h1 {
     font-size: 4rem;
 
-    @media only screen and (min-width: $screen-m) {
+    @media only screen and (min-width: $screen-s) {
       font-size: 6rem;
     }
 
@@ -37,7 +41,18 @@
 
   h2 {
     padding-left: 2px;
-    font-size: 3rem;
-    // line-height: 2;
+    font-size: 2.4rem;
+
+    @media only screen and (min-width: $screen-s) {
+      font-size: 3rem;
+    }
+
+    @media only screen and (min-width: $screen-l) {
+      font-size: 4rem;
+    }
+
+    @media only screen and (min-width: $screen-xl) {
+      font-size: 6rem;
+    }
   }
 }
