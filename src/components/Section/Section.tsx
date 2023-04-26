@@ -4,29 +4,29 @@ import Content from "../Content/Content"
 import ShowMore from "../ShowMore/ShowMore"
 import styles from './section.module.scss';
 
-import { runSwitch } from "./sectionController";
+// import { runSwitch } from "./sectionController";
 
-const bottomMargin = 50;
+const bottomMargin = 50; // 50
 
 interface SectionProps {
     sectionTitle: string;
+    children: React.ReactNode;
 }
 
-const Section: React.FC<SectionProps> = ({sectionTitle}) => {
+const Section: React.FC<SectionProps> = ({sectionTitle, children}) => {
     const [isOpen, setIsOpen] = useState(true);
-    const [content, setContent] = useState('');
+    // const [content, setContent] = useState('');
     const [contentHeight, setContentHeight] = useState<number>();
     const contentRef = useRef<HTMLDivElement | null>(null);
-    const initialRenderRef = useRef(true);
-
+    // const initialRenderRef = useRef(true);
 
     //only render after content has fetched
     useEffect(() => {
         // skip pageload render
-        if (initialRenderRef.current) {
-            initialRenderRef.current = false;
-            return;
-        }
+        // if (initialRenderRef.current) {
+        //     initialRenderRef.current = false;
+        //     return;
+        // }
         
         if (!contentRef.current) return;      
 
@@ -37,6 +37,7 @@ const Section: React.FC<SectionProps> = ({sectionTitle}) => {
                 childrenHeight += element.scrollHeight
             })
             
+            // WARNING: Does not take in account margins
             setContentHeight(childrenHeight);
         }
 
@@ -44,16 +45,16 @@ const Section: React.FC<SectionProps> = ({sectionTitle}) => {
       
         window.addEventListener('resize', currentContentHeight);
         return () => window.removeEventListener('resize', currentContentHeight);
-    }, [content, isOpen])
+    }, [isOpen])
 
-
-    runSwitch(sectionTitle, setContent);
+    // runSwitch(sectionTitle, setContent);
 
     return (
         <section className={styles.section}>
             <ShowMore isOpen={isOpen} setIsOpen={setIsOpen}>
                 <Heading title={sectionTitle} />
-                <Content ref={contentRef} contentHeight={contentHeight} dangInnerHTML={content} isOpen={isOpen} />
+                {/* <Content ref={contentRef} contentHeight={contentHeight} dangInnerHTML={content} isOpen={isOpen} /> */}
+                <Content ref={contentRef} contentHeight={contentHeight} isOpen={isOpen}>{children}</Content>
             </ShowMore>
         </section>
     )

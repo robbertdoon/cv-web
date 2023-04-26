@@ -1,0 +1,24 @@
+@use "../../styles/screens.scss" as *;
+
+.timetopic {
+  display: flex;
+  flex-direction: column;
+
+  @media only screen and (min-width: $screen-s) {
+    flex-direction: row;
+  }
+
+  &:not(:last-child) {
+    padding-bottom: 20px;
+  }
+
+  .period {
+    color: red;
+    min-width: 180px;
+  }
+
+  .subtitle {
+    font-style: italic;
+    color: grey;
+  }
+}
