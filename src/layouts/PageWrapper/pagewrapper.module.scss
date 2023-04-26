@@ -2,13 +2,23 @@
 
 .pagewrapper {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
   max-width: 1200px;
   margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 75vh 25vh auto auto;
+
+  @media only screen and (min-width: $screen-s) {
+    grid-template-columns: 1fr 260px;
+    grid-template-rows: 75vh 25vh auto;
+  }
 
   @media only screen and (min-width: $screen-m) {
-    flex-direction: row;
+    grid-template-columns: 260px 1fr;
+    grid-template-rows: none;
+  }
+
+  @media only screen and (min-width: $screen-l) {
+    grid-template-columns: 320px 1fr;
   }
 }
