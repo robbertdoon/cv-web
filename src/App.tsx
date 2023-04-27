@@ -1,7 +1,7 @@
 import { useState, useRef } from "react"
 import PageWrapper from "./layouts/PageWrapper/PageWrapper"
 import ProfilePicture from "./components/ProfilePicture/ProfilePicture"
-import PageTitle from "./components/PageTitle/PageTitle"
+import Header from "./layouts/Header/Header"
 import Sidebar from "./layouts/Sidebar/Sidebar"
 import Main from "./layouts/Main/Main"
 import Footer from "./layouts/Footer/Footer"
@@ -10,7 +10,7 @@ import Footer from "./layouts/Footer/Footer"
 const sup3rS4f3P4ss = 'test';
 
 function App() {  
-  const [isProtected, setIsProtected] = useState(true);
+  const [isProtected, setIsProtected] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null)
   // const [contentHeight, setContentHeight] = useState(100);
   // const [isOpen, setIsOpen] = useState(true);
@@ -30,8 +30,8 @@ function App() {
         <input type='text' ref={inputRef} onChange={handleChange} />
       ) : (
         <PageWrapper>
+        <Header title='Robbert Doon' subtitle='Front-end developer' />
         <ProfilePicture />
-        <PageTitle title='Robbert Doon' subtitle='Front-end developer' />
         <Sidebar />
         <Main />
         <Footer />

@@ -1,3 +1,5 @@
+// content of this file is never used - might need it for future implementation
+
 const getSectionData = async (sectionData: string) => {
     const response = await fetch('src/data/' + sectionData + '.json');
 

@@ -1,4 +1,5 @@
 import styles from './skills.module.scss';
+import { colors, randomColor } from "../../globals/colors";
 
 interface SkillsProps {
     title: string;
@@ -8,7 +9,7 @@ interface SkillsProps {
 const Skills: React.FC<SkillsProps> = ({ title, skills }) => {
   return (
     <>
-        <h3>{title}</h3>
+        <h3 style={{color: colors[randomColor]}}>{title}</h3>
         {skills.map((skill, index) => (
           <p key={index} className={styles.skills}>
             <span>{skill.name}</span>

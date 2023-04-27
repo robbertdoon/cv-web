@@ -1,26 +1,40 @@
-@import url("https://fonts.googleapis.com/css2?family=Gochi+Hand&family=JetBrains+Mono&family=Righteous&display=swap");
+@use "./colors.scss" as *;
+
+@import url("https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Lilita+One&family=JetBrains+Mono&family=Nunito&display=swap");
 * {
+  font-family: Nunito;
+}
+
+h1 {
+  font-family: Lilita One;
+  span {
+    font-family: Lilita One;
+  }
+}
+
+h2 {
   font-family: JetBrains Mono;
 }
 
-h1,
-h2,
 h3 {
   font-family: Gochi Hand;
-
+  font-size: 3rem;
   span {
     font-family: Gochi Hand;
   }
 }
 
-// h1 {
-//   font-size: 12rem;
-// }
+p {
+  line-height: 1.6;
+}
 
-// h2 {
-//   font-size: 4rem;
-// }
+a,
+a:active,
+a:focus {
+  color: $color-accent;
+  text-decoration: none;
+}
 
-h3 {
-  font-size: 3rem;
+a:hover {
+  color: $color-accent-dark;
 }

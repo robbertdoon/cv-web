@@ -1,4 +1,5 @@
 import styles from './timetopic.module.scss';
+import { colors, randomColor } from "../../globals/colors";
 
 interface TimeTopicProps {
     start: string;
@@ -12,15 +13,13 @@ interface TimeTopicProps {
 
 const TimeTopic: React.FC<TimeTopicProps> = ({start, end, topic, subtitle}) => {
   return (
-    <>
         <div className={styles.timetopic}>
-            <div className={styles.period}>{start}{end && ' - ' + end}</div>
+            <p style={{color: colors[randomColor]}} className={styles.period}>{start}{end && ' - ' + end}</p>
             <div className={styles.topic}>
-                <strong>{topic}</strong>
-                {subtitle && <div className={styles.subtitle}>{subtitle}</div>}
+                <p><strong>{topic}</strong></p>
+                {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
             </div>
         </div>
-    </>
   )
 }
 export default TimeTopic

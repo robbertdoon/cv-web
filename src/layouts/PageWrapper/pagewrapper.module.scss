@@ -21,4 +21,15 @@
   @media only screen and (min-width: $screen-l) {
     grid-template-columns: 320px 1fr;
   }
+
+  // To future me: keeping this around in case I want to give a special style to fullscreen mode
+  // @media only screen and (min-width: $screen-xl) {
+  //   margin-block: 10px;
+  //   gap: 10px;
+
+  //   > * {
+  //     border-radius: 10px;
+  //     overflow: hidden;
+  //   }
+  // }
 }
